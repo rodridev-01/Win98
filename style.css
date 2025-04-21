@@ -52,6 +52,19 @@ body {
   left: 50%;
 }
 
+.profile-image {
+  width: 150px;
+  height: auto;
+  display: block;
+  margin: 0 auto 10px auto;
+  border: 2px ridge white;
+}
+
+.window-body p {
+  text-align: justify;
+  line-height: 1.4;
+}
+
 /* Barra de tareas */
 .taskbar {
   position: fixed;
@@ -257,7 +270,6 @@ body {
 #calculator {
   width: 350px;
   height: 200px; 
-  padding: 10px;
   background: #c0c0c0;
   position: relative;
   display: flex;
