@@ -162,66 +162,22 @@ function makeDraggable(element) {
   let offsetX = 0;
   let offsetY = 0;
 
-  // Detectar el inicio del arrastre (mouse o tactil)
   titleBar.addEventListener('mousedown', function(e) {
-    startDrag(e);
-  });
-
-  titleBar.addEventListener('touchstart', function(e) {
-    startDrag(e);
-  });
-
-  // Función para iniciar el arrastre
-  function startDrag(e) {
     isDragging = true;
-    if (e.type === 'mousedown') {
-      offsetX = e.clientX - element.getBoundingClientRect().left;
-      offsetY = e.clientY - element.getBoundingClientRect().top;
-    } else if (e.type === 'touchstart') {
-      offsetX = e.touches[0].clientX - element.getBoundingClientRect().left;
-      offsetY = e.touches[0].clientY - element.getBoundingClientRect().top;
-    }
+    offsetX = e.clientX - element.getBoundingClientRect().left;
+    offsetY = e.clientY - element.getBoundingClientRect().top;
     element.style.position = 'absolute';
     element.style.zIndex = 1000;
-  }
+  });
 
-  // Detectar movimiento del arrastre (mouse o tactil)
   document.addEventListener('mousemove', function(e) {
     if (isDragging) {
-      moveElement(e);
+      element.style.left = (e.clientX - offsetX) + 'px';
+      element.style.top = (e.clientY - offsetY) + 'px';
     }
   });
 
-  document.addEventListener('touchmove', function(e) {
-    if (isDragging) {
-      moveElement(e);
-    }
-  });
-
-  // Función para mover la ventana
-  function moveElement(e) {
-    let clientX, clientY;
-    if (e.type === 'mousemove') {
-      clientX = e.clientX;
-      clientY = e.clientY;
-    } else if (e.type === 'touchmove') {
-      clientX = e.touches[0].clientX;
-      clientY = e.touches[0].clientY;
-    }
-    element.style.left = (clientX - offsetX) + 'px';
-    element.style.top = (clientY - offsetY) + 'px';
-  }
-
-  // Detectar el final del arrastre (mouse o tactil)
   document.addEventListener('mouseup', function() {
-    isDragging = false;
-  });
-
-  document.addEventListener('touchend', function() {
-    isDragging = false;
-  });
-
-  document.addEventListener('touchcancel', function() {
     isDragging = false;
   });
 }
