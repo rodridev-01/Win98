@@ -1,0 +1,339 @@
+body {
+  background: teal;
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+  font-family: "MS Sans Serif", "Segoe UI", sans-serif;
+  font-size: 8pt;
+}
+
+.desktop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px; 
+}
+
+.icon {
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.icon img {
+  width: 32px;  
+  height: 32px;  
+  margin-bottom: 4px;
+}
+
+.icon p {
+  margin: 0;
+  font-size: 11px;
+  color: #ffffff;
+}
+
+.title-bar-controls button {
+  font-weight: bold;
+  font-size: 12px; 
+}
+
+/* Ventanas */
+.window {
+  position: absolute;
+  z-index: 10;
+  display: none;
+  background: #c0c0c0;
+  top: 50%;
+  left: 50%;
+}
+
+/* Barra de tareas */
+.taskbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 36px;
+  background: #c0c0c0;
+  display: flex;
+  align-items: center;
+  padding: 2px 4px;
+  box-sizing: border-box;
+  border-top: 2px solid white;
+  border-bottom: 2px solid gray;
+  border-left: 2px solid white;
+  border-right: 2px solid gray;
+  z-index: 100;
+}
+
+.start-menu-area {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* Botón de inicio */
+.start-button {
+  background: #c0c0c0;
+  border-top: 2px solid white;
+  border-left: 2px solid white;
+  border-bottom: 2px solid gray;
+  border-right: 2px solid gray;
+  padding: 4px 10px;
+  font-weight: bold;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  height: 28px;
+}
+
+/* Sección de íconos de las aplicaciones abiertas */
+.taskbar-items {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: flex-start;
+  flex-grow: 1; 
+}
+
+.taskbar-item-content {
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  gap: 4px;  
+}
+
+/* Estilo para el ícono */
+.taskbar-item img {
+  width: 16px; 
+  height: 16px;
+}
+
+/* Bandeja del sistema (a la derecha) */
+.tray {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 2px 6px;
+  background: #c0c0c0;
+  border-top: 2px solid white;
+  border-left: 2px solid white;
+  border-bottom: 2px solid gray;
+  border-right: 2px solid gray;
+}
+
+/* Iconos de la bandeja del sistema */
+.tray-icon img {
+  width: 16px; 
+  vertical-align: middle;
+}
+
+/* Reloj */
+.clock {
+  font-size: 12px;
+  font-weight: bold;
+  padding-left: 4px;
+  color: black;
+}
+
+
+.today {
+  background-color: navy; 
+  color: white;
+  font-weight: bold;
+}
+
+
+/* Calendario */
+.calendar {
+  position: fixed;
+  bottom: 50px;
+  right: 10px;
+  width: 200px;
+  background: #c0c0c0;
+  border-top: 2px solid white;
+  border-left: 2px solid white;
+  border-bottom: 2px solid gray;
+  border-right: 2px solid gray;
+  font-family: 'Tahoma', sans-serif;
+  font-size: 12px;
+  z-index: 101;
+  padding: 6px;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.calendar-header button {
+  background: #c0c0c0;
+  border-top: 1px solid white;
+  border-left: 1px solid white;
+  border-bottom: 1px solid gray;
+  border-right: 1px solid gray;
+  padding: 1px 2px;
+  cursor: pointer;
+}
+
+.today {
+  background-color: navy; 
+  color: white;
+  font-weight: bold;
+}
+
+
+.calendar-body {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  text-align: center;
+}
+
+.calendar-body div {
+  padding: 2px 0;
+  border: 1px solid transparent;
+}
+
+.calendar-body div:hover {
+  background-color: navy;
+  color: white;
+  border: 1px solid black;
+}
+
+
+.hidden {
+  display: none;
+}
+
+/* Menú Inicio */
+.start-menu {
+  position: fixed;
+  bottom: 40px;
+  left: 5px;
+  width: 160px; 
+  background: #c0c0c0;
+  padding: 2px; 
+  border: 2px outset white;
+  display: none;
+  z-index: 99;
+  font-family: 'Tahoma', sans-serif;
+}
+
+
+.start-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.start-menu li {
+  padding: 4px 6px; 
+  margin-bottom: 2px; 
+  cursor: pointer;
+}
+
+.start-menu li:hover {
+  background-color: navy;
+  color: white;
+}
+
+#clippy {
+  position: absolute;
+  z-index: 10;
+}
+
+/*Calculadora */
+#calculator {
+  width: 350px;
+  height: 200px; 
+  padding: 10px;
+  background: #c0c0c0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.calc-buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.calc-buttons button {
+  padding: 8px;
+  cursor: pointer;
+  background-color: #c0c0c0;
+  text-align: center;
+  width: 100%; 
+}
+
+.calc-buttons button:hover {
+  background-color: #000080;
+  color: white;
+}
+
+#calc-display {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  text-align: right;
+  background-color: #ffffff;
+  box-sizing: border-box; 
+}
+
+@media (max-width: 768px) {
+  .desktop {
+    padding: 4px;
+    gap: 6px;
+  }
+
+  .window {
+    width: 80%;
+    left: 5%;
+    top: 50px;
+  }
+
+  .start-button {
+    padding: 2px 6px;
+    font-size: 11px;
+    height: 26px;
+  }
+
+  .tray {
+    height: 26px;
+    font-size: 10px;
+    padding: 2px 4px;
+  }
+
+  #calculator {
+    width: 90%;
+    height: auto;
+    padding: 8px;
+  }
+
+  .calc-buttons button {
+    padding: 6px;
+  }
+
+  #calc-display {
+    font-size: 14px;
+  }
+
+  .start-menu {
+    width: 140px;
+  }
+}

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RodriDev 98</title>
+
+  <!-- 98.css Styles -->
+  <link rel="stylesheet" href="https://unpkg.com/98.css">
+  <link rel="stylesheet" type="text/css" href="https://unpkg.com/clippy.js@latest/build/clippy.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Escritorio -->
+  <div class="desktop">
+    <div class="icon" onclick="openWindow('window1')">
+      <img src="https://win98icons.alexmeub.com/icons/png/directory_closed-4.png" alt="Folder">
+      <p>Mis Proyectos</p>
+    </div>
+    <div class="icon" onclick="openWindow('window2')">
+      <img src="https://win98icons.alexmeub.com/icons/png/msagent-4.png" alt="Folder">
+      <p>Sobre Mí</p>
+    </div>
+    <!-- Icono de la Calculadora -->
+    <div class="icon" onclick="openWindow('calculator')">
+      <img src="https://win98icons.alexmeub.com/icons/png/accessibility_big_keys.png" alt="Calculator">
+      <p>Calculadora</p>
+    </div>
+  </div>
+
+  <!-- Calculadora -->
+  <div id="calculator" class="calculator-window window" style="display: none;">
+    <div class="title-bar">
+      <div class="title-bar-text">Calculadora</div>
+      <div class="title-bar-controls">
+        <button aria-label="Minimizar" onclick="minimizeWindow('calculator')">-</button>
+        <button aria-label="Cerrar" onclick="closeWindow('calculator')">x</button>
+      </div>
+    </div>
+    <div class="window-body">
+      <input type="text" id="calc-display" disabled class="calc-display" />
+      <div class="calc-buttons">
+        <button onclick="appendToDisplay('1')">1</button>
+        <button onclick="appendToDisplay('2')">2</button>
+        <button onclick="appendToDisplay('3')">3</button>
+        <button onclick="appendToDisplay('+')">+</button>
+
+        <button onclick="appendToDisplay('4')">4</button>
+        <button onclick="appendToDisplay('5')">5</button>
+        <button onclick="appendToDisplay('6')">6</button>
+        <button onclick="appendToDisplay('-')">-</button>
+
+        <button onclick="appendToDisplay('7')">7</button>
+        <button onclick="appendToDisplay('8')">8</button>
+        <button onclick="appendToDisplay('9')">9</button>
+        <button onclick="appendToDisplay('*')">*</button>
+
+        <button onclick="appendToDisplay('0')">0</button>
+        <button onclick="clearDisplay()">C</button>
+        <button onclick="calculateResult()">=</button>
+        <button onclick="appendToDisplay('/')">/</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ventana 1 -->
+  <div class="window" id="window1">
+    <div class="title-bar">
+      <div class="title-bar-text">Proyectos</div>
+      <div class="title-bar-controls">
+        <button aria-label="Minimizar" onclick="minimizeWindow('window1')">-</button>
+        <button aria-label="Cerrar" onclick="closeWindow('window1')">x</button>
+      </div>
+    </div>
+    <div class="window-body">
+      <p>Mis proyectos geniales aquí...</p>
+    </div>
+  </div>
+
+
+
+  <!-- Ventana 2 -->
+  <div class="window" id="window2">
+    <div class="title-bar">
+      <div class="title-bar-text">Sobre mí</div>
+      <div class="title-bar-controls">
+        <button aria-label="Minimizar" onclick="minimizeWindow('window2')">-</button>
+        <button aria-label="Cerrar" onclick="closeWindow('window2')">x</button>
+      </div>
+    </div>
+    <div class="window-body">
+      <p>Hola, soy RodriDev, ¡bienvenido a mi escritorio estilo Windows 98!</p>
+    </div>
+  </div>
+
+
+  <!-- Barra de tareas -->
+  <footer class="taskbar">
+    <div class="start-menu-area">
+      <button class="start-button" onclick="toggleStartMenu()">
+        <img src="https://win98icons.alexmeub.com/icons/png/windows-0.png" alt="Inicio" width="16"
+          style="vertical-align: middle; margin-right: 4px;">
+        Inicio
+      </button>
+    </div>
+
+    <!-- Sección de íconos de las aplicaciones abiertas -->
+    <div class="taskbar-items">
+      <div class="taskbar-apps">
+
+      </div>
+    </div>
+
+    <!-- Bandeja del sistema (a la derecha) -->
+    <div class="tray">
+      <!-- Icono de calendario -->
+      <div class="tray-icon" onclick="toggleCalendar()">
+        <img src="https://win98icons.alexmeub.com/icons/png/calendar-0.png" alt="Calendar">
+      </div>
+
+      <!-- Calendario desplegable -->
+      <div id="calendar" class="calendar hidden">
+        <div class="calendar-header">
+          <button onclick="prevMonth()">&lt;</button>
+          <span id="calendar-month">Abril 2025</span>
+          <button onclick="nextMonth()">&gt;</button>
+        </div>
+        <div class="calendar-body" id="calendar-body"></div>
+      </div>
+      <!-- Icono de sonido -->
+      <div class="tray-icon">
+        <img src="https://win98icons.alexmeub.com/icons/png/loudspeaker_rays-0.png" alt="Sound">
+      </div>
+      <!-- Reloj -->
+      <div class="clock" id="clock">00:00</div>
+    </div>
+  </footer>
+
+
+  <!-- Menú de inicio -->
+  <div class="start-menu" id="startMenu">
+    <div class="window-body" style="padding: 0;">
+      <ul class="start-menu-list">
+        <li>Programas</li>
+        <li>Documentos</li>
+        <li>Configuración</li>
+        <li>Buscar</li>
+        <li>Ayuda</li>
+        <li>Ejecutar...</li>
+        <hr>
+        <li>Apagar...</li>
+      </ul>
+    </div>
+  </div>
+
+
+  <div id="clippy-container"></div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://unpkg.com/clippy.js@latest/build/clippy.min.js"></script>
+  <script src="script.js"></script>
+
+</body>
+
+</html>
