@@ -255,14 +255,25 @@ body {
 
 /*Calculadora */
 #calculator {
-  width: 350px;
-  height: 200px; 
+  width: 90%;
+  max-width: 350px;
+  height: auto;
   padding: 10px;
   background: #c0c0c0;
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  box-sizing: border-box; 
+}
+
+#calc-display {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  text-align: right;
+  background-color: #ffffff;
+  box-sizing: border-box; 
 }
 
 .calc-buttons {
@@ -274,7 +285,7 @@ body {
 }
 
 .calc-buttons button {
-  padding: 8px;
+  padding: 10px;
   cursor: pointer;
   background-color: #c0c0c0;
   text-align: center;
@@ -286,14 +297,6 @@ body {
   color: white;
 }
 
-#calc-display {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 10px;
-  text-align: right;
-  background-color: #ffffff;
-  box-sizing: border-box; 
-}
 
 @media (max-width: 768px) {
   .desktop {
