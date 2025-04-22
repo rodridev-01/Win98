@@ -1,12 +1,53 @@
-document.addEventListener('DOMContentLoaded', function() {
+let isSelecting = false;
+let startX, startY;
+const selectionBox = document.createElement('div');
+selectionBox.id = 'selectionBox';
+document.body.appendChild(selectionBox);
+
+document.addEventListener('mousedown', (e) => {
+  if (e.button !== 0 || e.target.closest('.window')) return;
+
+  isSelecting = true;
+  startX = e.pageX;
+  startY = e.pageY;
+  selectionBox.style.left = `${startX}px`;
+  selectionBox.style.top = `${startY}px`;
+  selectionBox.style.width = '0px';
+  selectionBox.style.height = '0px';
+  selectionBox.style.display = 'block';
+});
+
+document.addEventListener('mousemove', (e) => {
+  if (!isSelecting) return;
+
+  const currentX = e.pageX;
+  const currentY = e.pageY;
+
+  const width = Math.abs(currentX - startX);
+  const height = Math.abs(currentY - startY);
+
+  selectionBox.style.width = `${width}px`;
+  selectionBox.style.height = `${height}px`;
+  selectionBox.style.left = `${Math.min(currentX, startX)}px`;
+  selectionBox.style.top = `${Math.min(currentY, startY)}px`;
+});
+
+document.addEventListener('mouseup', () => {
+  if (isSelecting) {
+    isSelecting = false;
+    selectionBox.style.display = 'none';
+  }
+});
+
+
+document.addEventListener('DOMContentLoaded', function () {
   // Cargar Clippy
-  clippy.load('Merlin', function(agent) {
+  clippy.load('Merlin', function (agent) {
     agent.show();
     agent.moveTo(100, 100);
     agent.speak('¡Hola, soy Clippy!');
   });
 
-  // Hacemos todas las ventanas arrastrables
   document.querySelectorAll('.window').forEach(makeDraggable);
 
   // Actualizar reloj
@@ -14,55 +55,51 @@ document.addEventListener('DOMContentLoaded', function() {
   updateClock();
 });
 
-// Funciones de ventanas
-function openWindow(id) {
+// Funciones para abrir, minimizar y cerrar ventanas
+function openWindow(id, iconSrc) {
   const windowElement = document.getElementById(id);
   windowElement.style.display = 'block';
 
-  if (id === 'calculator' && !document.getElementById('taskbar-calculator')) {
+  if (!document.getElementById('taskbar-' + id)) {
     const taskbar = document.querySelector('.taskbar-apps');
     const button = document.createElement('div');
-    button.id = 'taskbar-calculator';
+    button.id = 'taskbar-' + id;
     button.classList.add('taskbar-item');
 
-    // Crear contenedor para icono y texto
-    const itemContent = document.createElement('div');
-    itemContent.classList.add('taskbar-item-content');
-    
-    // Crear icono
     const icon = document.createElement('img');
-    icon.src = 'https://win98icons.alexmeub.com/icons/png/accessibility_big_keys.png'; // Ruta del ícono
-    icon.alt = 'Calculadora';
-    icon.style.width = '16px';  // Ajustar el tamaño del icono
+    icon.src = iconSrc;
+    icon.alt = '';
+    icon.style.width = '25px';
+    icon.style.height = '25px';
 
-    // Crear texto
-    const text = document.createElement('span');
-    text.textContent = 'Calculadora';
+    button.appendChild(icon);
 
-    // Añadir icono y texto al contenedor
-    itemContent.appendChild(icon);
-    itemContent.appendChild(text);
-
-    // Añadir el contenedor al botón
-    button.appendChild(itemContent);
-
-    button.onclick = () => openWindow('calculator');
+    button.onclick = () => openWindow(id, iconSrc);
     taskbar.appendChild(button);
   }
 }
-
-
 
 function minimizeWindow(id) {
   const windowElement = document.getElementById(id);
   windowElement.style.display = 'none';
 
-  if (id === 'calculator' && !document.getElementById('taskbar-calculator')) {
+  if (!document.getElementById('taskbar-' + id)) {
     const taskbar = document.querySelector('.taskbar-apps');
-    const button = document.createElement('button');
-    button.id = 'taskbar-calculator';
-    button.textContent = 'Calculadora';
-    button.onclick = () => openWindow('calculator');
+    const button = document.createElement('div');
+    button.id = 'taskbar-' + id;
+    button.classList.add('taskbar-item');
+
+    const iconSrc = windowElement.getAttribute('data-icon');
+
+    const icon = document.createElement('img');
+    icon.src = iconSrc;
+    icon.alt = '';
+    icon.style.width = '25px';
+    icon.style.height = '25px';
+
+    button.appendChild(icon);
+
+    button.onclick = () => openWindow(id, iconSrc);
     taskbar.appendChild(button);
   }
 }
@@ -71,13 +108,20 @@ function closeWindow(id) {
   const windowElement = document.getElementById(id);
   windowElement.style.display = 'none';
 
-  if (id === 'calculator') {
-    const taskbarButton = document.getElementById('taskbar-calculator');
-    if (taskbarButton) {
-      taskbarButton.remove();
+  if (id === 'musicPlayer') {
+    const audio = windowElement.querySelector('audio');
+    if (audio) {
+      audio.pause();
+      audio.currentTime = 0; 
     }
   }
+
+  const taskbarButton = document.getElementById('taskbar-' + id);
+  if (taskbarButton) {
+    taskbarButton.remove();
+  }
 }
+
 
 // Menú Inicio
 function toggleStartMenu() {
@@ -162,7 +206,7 @@ function makeDraggable(element) {
   let offsetX = 0;
   let offsetY = 0;
 
-  titleBar.addEventListener('mousedown', function(e) {
+  titleBar.addEventListener('mousedown', function (e) {
     isDragging = true;
     offsetX = e.clientX - element.getBoundingClientRect().left;
     offsetY = e.clientY - element.getBoundingClientRect().top;
@@ -170,14 +214,54 @@ function makeDraggable(element) {
     element.style.zIndex = 1000;
   });
 
-  document.addEventListener('mousemove', function(e) {
+  document.addEventListener('mousemove', function (e) {
     if (isDragging) {
       element.style.left = (e.clientX - offsetX) + 'px';
       element.style.top = (e.clientY - offsetY) + 'px';
     }
   });
 
-  document.addEventListener('mouseup', function() {
+  document.addEventListener('mouseup', function () {
     isDragging = false;
   });
 }
+
+const audio = document.getElementById('audioPlayer');
+const progressBar = document.getElementById('progressBar');
+const timeDisplay = document.getElementById('timeDisplay');
+const volumeControl = document.getElementById('volumeControl');
+
+function playMusic() {
+  audio.play();
+}
+
+function pauseMusic() {
+  audio.pause();
+}
+
+function stopMusic() {
+  audio.pause();
+  audio.currentTime = 0;
+}
+
+audio.addEventListener('timeupdate', () => {
+  const progress = (audio.currentTime / audio.duration) * 100;
+  progressBar.value = progress;
+  
+  const currentMinutes = Math.floor(audio.currentTime / 60);
+  const currentSeconds = Math.floor(audio.currentTime % 60).toString().padStart(2, '0');
+  
+  const durationMinutes = Math.floor(audio.duration / 60);
+  const durationSeconds = Math.floor(audio.duration % 60).toString().padStart(2, '0');
+
+  timeDisplay.textContent = `${currentMinutes}:${currentSeconds} / ${durationMinutes}:${durationSeconds}`;
+});
+
+progressBar.addEventListener('input', () => {
+  const seekTime = (progressBar.value / 100) * audio.duration;
+  audio.currentTime = seekTime;
+});
+
+volumeControl.addEventListener('input', () => {
+  audio.volume = volumeControl.value;
+});

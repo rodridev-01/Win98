@@ -7,6 +7,15 @@ body {
   font-size: 8pt;
 }
 
+#selectionBox {
+  position: absolute;
+  border: 1px dotted gray;
+  background-color: rgba(0, 0, 128, 0.1); 
+  display: none;
+  pointer-events: none;
+  z-index: 9999;
+}
+
 .desktop {
   position: absolute;
   top: 0;
@@ -128,6 +137,20 @@ body {
   width: 16px; 
   height: 16px;
 }
+
+.taskbar-apps {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding: 2px;
+  gap: 5px;
+  height: 28px;
+  border-top: 2px solid #fff;
+  border-left: 2px solid #fff;
+  border-bottom: 2px solid #808080;
+  border-right: 2px solid #808080;
+}
+
 
 /* Bandeja del sistema (a la derecha) */
 .tray {
