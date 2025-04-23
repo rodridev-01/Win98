@@ -3,8 +3,9 @@ body {
   margin: 0;
   height: 100vh;
   overflow: hidden;
-  font-family: "MS Sans Serif", "Segoe UI", sans-serif;
   font-size: 8pt;
+  font-family: "Pixelated MS Sans Serif", "MS Sans Serif", Geneva, sans-serif;
+
 }
 
 #selectionBox {
@@ -32,7 +33,14 @@ body {
   height: 60px;
   text-align: center;
   cursor: pointer;
+  user-select: none;
 }
+
+.icon.selected {
+  color: white;
+  border: 1px dotted white;
+}
+
 
 .icon img {
   width: 32px;  
@@ -59,19 +67,6 @@ body {
   background: #c0c0c0;
   top: 50%;
   left: 50%;
-}
-
-.profile-image {
-  width: 150px;
-  height: auto;
-  display: block;
-  margin: 0 auto 10px auto;
-  border: 2px ridge white;
-}
-
-.window-body p {
-  text-align: justify;
-  line-height: 1.4;
 }
 
 /* Barra de tareas */
@@ -199,7 +194,6 @@ body {
   border-left: 2px solid white;
   border-bottom: 2px solid gray;
   border-right: 2px solid gray;
-  font-family: 'Tahoma', sans-serif;
   font-size: 12px;
   z-index: 101;
   padding: 6px;
@@ -263,7 +257,6 @@ body {
   border: 2px outset white;
   display: none;
   z-index: 99;
-  font-family: 'Tahoma', sans-serif;
 }
 
 
@@ -282,11 +275,6 @@ body {
 .start-menu li:hover {
   background-color: navy;
   color: white;
-}
-
-#clippy {
-  position: absolute;
-  z-index: 10;
 }
 
 /*Calculadora */

@@ -39,15 +39,27 @@ document.addEventListener('mouseup', () => {
   }
 });
 
+//CLICK EN ICONOS
+const icons = document.querySelectorAll('.desktop .icon');
 
-document.addEventListener('DOMContentLoaded', function () {
-  // Cargar Clippy
-  clippy.load('Merlin', function (agent) {
-    agent.show();
-    agent.moveTo(100, 100);
-    agent.speak('¡Hola, soy Clippy!');
+icons.forEach(icon => {
+  icon.addEventListener('click', () => {
+    if (icon.classList.contains('selected')) {
+      icon.classList.remove('selected'); 
+    } else {
+      icons.forEach(i => i.classList.remove('selected')); 
+      icon.classList.add('selected'); 
+    }
   });
 
+  icon.addEventListener('dblclick', () => {
+    const id = icon.getAttribute('data-window');
+    const iconSrc = icon.getAttribute('data-icon');
+    openWindow(id, iconSrc);
+  });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
   document.querySelectorAll('.window').forEach(makeDraggable);
 
   // Actualizar reloj
@@ -60,11 +72,13 @@ function openWindow(id, iconSrc) {
   const windowElement = document.getElementById(id);
   windowElement.style.display = 'block';
 
-  if (!document.getElementById('taskbar-' + id)) {
+  let taskbarButton = document.getElementById('taskbar-' + id);
+
+  if (!taskbarButton) {
     const taskbar = document.querySelector('.taskbar-apps');
-    const button = document.createElement('div');
-    button.id = 'taskbar-' + id;
-    button.classList.add('taskbar-item');
+    taskbarButton = document.createElement('div');
+    taskbarButton.id = 'taskbar-' + id;
+    taskbarButton.classList.add('taskbar-item');
 
     const icon = document.createElement('img');
     icon.src = iconSrc;
@@ -72,36 +86,22 @@ function openWindow(id, iconSrc) {
     icon.style.width = '25px';
     icon.style.height = '25px';
 
-    button.appendChild(icon);
-
-    button.onclick = () => openWindow(id, iconSrc);
-    taskbar.appendChild(button);
+    taskbarButton.appendChild(icon);
+    taskbar.appendChild(taskbarButton);
   }
+
+  taskbarButton.onclick = () => {
+    if (windowElement.style.display === 'none' || windowElement.style.display === '') {
+      windowElement.style.display = 'block';
+    } else {
+      windowElement.style.display = 'none';
+    }
+  };
 }
 
 function minimizeWindow(id) {
   const windowElement = document.getElementById(id);
   windowElement.style.display = 'none';
-
-  if (!document.getElementById('taskbar-' + id)) {
-    const taskbar = document.querySelector('.taskbar-apps');
-    const button = document.createElement('div');
-    button.id = 'taskbar-' + id;
-    button.classList.add('taskbar-item');
-
-    const iconSrc = windowElement.getAttribute('data-icon');
-
-    const icon = document.createElement('img');
-    icon.src = iconSrc;
-    icon.alt = '';
-    icon.style.width = '25px';
-    icon.style.height = '25px';
-
-    button.appendChild(icon);
-
-    button.onclick = () => openWindow(id, iconSrc);
-    taskbar.appendChild(button);
-  }
 }
 
 function closeWindow(id) {
@@ -112,7 +112,7 @@ function closeWindow(id) {
     const audio = windowElement.querySelector('audio');
     if (audio) {
       audio.pause();
-      audio.currentTime = 0; 
+      audio.currentTime = 0;
     }
   }
 
@@ -121,7 +121,6 @@ function closeWindow(id) {
     taskbarButton.remove();
   }
 }
-
 
 // Menú Inicio
 function toggleStartMenu() {

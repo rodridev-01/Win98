@@ -17,29 +17,30 @@
   <!-- Escritorio -->
   <div class="desktop">
     <div class="icon"
-      onclick="openWindow('window1', 'https://win98icons.alexmeub.com/icons/png/directory_open_file_mydocs-4.png', 'Proyectos')">
+      ondblclick="openWindow('window1', 'https://win98icons.alexmeub.com/icons/png/directory_open_file_mydocs-4.png', 'Proyectos')">
       <img src="https://win98icons.alexmeub.com/icons/png/directory_open_file_mydocs-4.png" alt="Folder">
       <p>Proyectos</p>
     </div>
 
     <div class="icon"
-      onclick="openWindow('window2', 'https://win98icons.alexmeub.com/icons/png/msagent-4.png', 'Sobre Mí')">
+      ondblclick="openWindow('window2', 'https://win98icons.alexmeub.com/icons/png/msagent-4.png', 'Sobre Mí')">
       <img src="https://win98icons.alexmeub.com/icons/png/msagent-4.png" alt="Folder">
       <p>Sobre Mí</p>
     </div>
 
     <div class="icon"
-      onclick="openWindow('calculator', 'https://win98icons.alexmeub.com/icons/png/accessibility_big_keys.png', 'Calculadora')">
+      ondblclick="openWindow('calculator', 'https://win98icons.alexmeub.com/icons/png/accessibility_big_keys.png', 'Calculadora')">
       <img src="https://win98icons.alexmeub.com/icons/png/accessibility_big_keys.png" alt="Calculator">
       <p>Calculadora</p>
     </div>
 
     <div class="icon"
-      onclick="openWindow('musicPlayer', 'https://win98icons.alexmeub.com/icons/png/cd_audio_cd_a-4.png', 'Música')">
+      ondblclick="openWindow('musicPlayer', 'https://win98icons.alexmeub.com/icons/png/cd_audio_cd_a-4.png', 'Música')">
       <img src="https://win98icons.alexmeub.com/icons/png/cd_audio_cd_a-4.png" alt="Music Player">
       <p>Música</p>
     </div>
   </div>
+
 
   <div id="musicPlayer" class="window" style="display: none; width: 320px; height: auto;">
     <div class="title-bar">
@@ -123,8 +124,8 @@
     </div>
   </div>
 
-  <!-- Ventana 1 -->
-  <div class="window" id="window1">
+  <!-- Ventana 1: Proyectos -->
+  <div class="window" id="window1" style="max-width: 600px; margin: 2rem auto;">
     <div class="title-bar">
       <div class="title-bar-text">Proyectos</div>
       <div class="title-bar-controls">
@@ -133,14 +134,55 @@
       </div>
     </div>
     <div class="window-body">
-      <p>Mis proyectos geniales aquí...</p>
+      <ul style="list-style: none; padding-left: 0;">
+        <li style="margin-bottom: 1rem;">
+          <strong>📚 BooksLine</strong><br>
+          <a href="https://booklin3.netlify.app" target="_blank">Demo</a> |
+          <a href="https://github.com/rodridev-01/BooksLine" target="_blank">Código</a>
+        </li>
+        <li style="margin-bottom: 1rem;">
+          <strong>🎂 CakeFlix</strong><br>
+          <a href="https://cakeandfionna.netlify.app" target="_blank">Demo</a> |
+          <a href="https://github.com/rodridev-01/CakeFlix" target="_blank">Código</a>
+        </li>
+        <li style="margin-bottom: 1rem;">
+          <strong>🧰 Bento Portfolio</strong><br>
+          <a href="https://rodridev-01.github.io/BentoPortfolio" target="_blank">Demo</a> |
+          <a href="https://github.com/rodridev-01/BentoPortfolio" target="_blank">Código</a>
+        </li>
+        <li style="margin-bottom: 1rem;">
+          <strong>🍿 Crunchy.va</strong><br>
+          <a href="https://animebebop.netlify.app" target="_blank">Demo</a> |
+          <a href="https://github.com/rodridev-01/Crunchy.va" target="_blank">Código</a>
+        </li>
+        <li style="margin-bottom: 1rem;">
+          <strong>🎮 EFSRT</strong><br>
+          <a href="https://proyecto.live-ra.com" target="_blank">Demo</a> |
+          <a href="https://github.com/rodridev-01/EFSRT" target="_blank">Código</a>
+        </li>
+        <li style="margin-bottom: 1rem;">
+          <strong>🖼️ Portfolio Template</strong><br>
+          <a href="https://rodridev-01.github.io/PortfolioTemplate" target="_blank">Demo</a> |
+          <a href="https://github.com/rodridev-01/PortfolioTemplate" target="_blank">Código</a>
+        </li>
+        <li style="margin-bottom: 1rem;">
+          <strong>💼 Softdata Website</strong><br>
+          <a href="https://sofdata.netlify.app" target="_blank">Demo</a> |
+          <a href="https://github.com/rodridev-01/SoftdataWebsite" target="_blank">Código</a>
+        </li>
+        <li style="margin-bottom: 1rem;">
+          <strong>🦝 Raccoon's Adventure</strong><br>
+          <a href="https://github.com/rodridev-01/RaccoonsAdventure/releases" target="_blank">Descargar Juego</a> |
+          <a href="https://github.com/rodridev-01/RaccoonsAdventure" target="_blank">Código</a>
+        </li>
+      </ul>
     </div>
   </div>
 
 
 
-  <!-- Ventana 2 -->
-  <div class="window" id="window2">
+  <!-- Ventana RPG estilo carta profesional -->
+  <div class="window" style="max-width: 600px;" id="window2">
     <div class="title-bar">
       <div class="title-bar-text">Sobre mí</div>
       <div class="title-bar-controls">
@@ -148,14 +190,60 @@
         <button aria-label="Cerrar" onclick="closeWindow('window2')">x</button>
       </div>
     </div>
-    <div class="window-body">
-      <img src="me.png" alt="Foto de RodriDev" class="profile-image">
-      <p>¡Hola! Soy <strong>RodriDev</strong>, un apasionado de la tecnología y el desarrollo web.<br>
-        Bienvenido a mi pequeño rincón digital inspirado en el clásico Windows 98.<br>
-        Me encanta crear experiencias que mezclan lo retro con lo moderno.<br>
-        Explora, diviértete y siéntete como en un viejo pero confiable escritorio.</p>
+
+    <div class="window-body" style="display: flex;">
+
+      <!-- Avatar -->
+      <div style="flex: 1; text-align: center; border-right: 2px dashed #000080; padding: 1rem;">
+        <img src="https://rodridev.xyz/Images/profile.png" alt="RodriDev"
+          style="width: 96px; image-rendering: pixelated; border: 2px inset #000;">
+        <h1 style="font-size: 20px;">Rodrigo Peña</h3>
+          <p style="font-size: 15px; margin: 0; color: #333;">Frontend Developer</p>
+          <div style="margin-top: 1rem; background: #dcdcdc; border: 1px solid #000; padding: 0.5rem; font-size: 13px;">
+            <strong>HP:</strong> 94/100<br>
+            <strong>MP:</strong> 110/150
+          </div>
+      </div>
+
+      <!-- Stats y habilidades -->
+      <div style="flex: 2; padding: 0 1rem 1rem 1rem;">
+
+        <section style="margin-bottom: 1rem;">
+          <h4 style="margin-bottom: 0.5rem; border-bottom: 1px solid #000080; color: #000080;">📊 Perfil Técnico</h4>
+          <ul style="list-style: none; padding-left: 0; margin: 0; font-size: 14px;">
+            <li>🔢 Experiencia: +3 años</li>
+            <li>🧠 Especialidad: UI/UX & sistemas interactivos</li>
+            <li>📍 Ubicación: Lima, Perú</li>
+            <li>🎓 Formación: Técnico en Computación e Informática</li>
+          </ul>
+        </section>
+
+        <section style="margin-bottom: 1rem;">
+          <h4 style="margin-bottom: 0.5rem; border-bottom: 1px solid #000080; color: #000080;">🧪 Skills</h4>
+          <ul style="list-style: none; padding-left: 0; margin: 0; font-size: 14px;">
+            <li>🖥️ Sistemas completos con CRUD en PHP/MySQL</li>
+            <li>🎮 Diseño interactivo estilo retro/gaming</li>
+            <li>⚙️ Optimización UI responsive (14-column grid)</li>
+            <li>🔍 Depuración y mejora continua + métricas</li>
+          </ul>
+        </section>
+
+        <section>
+          <h4 style="margin-bottom: 0.5rem; border-bottom: 1px solid #000080; color: #000080;">📜 Biografía</h4>
+          <p style="font-size: 13px; margin: 0;">
+            Soy un desarrollador apasionado por las interfaces visuales y sistemas funcionales. Me especializo en
+            transformar ideas en experiencias interactivas, combinando estética retro con funcionalidad moderna. Siempre
+            en evolución, creo productos web que cuentan historias y resuelven problemas reales.
+          </p>
+        </section>
+
+      </div>
     </div>
   </div>
+
+
+
+
 
 
   <!-- Barra de tareas -->
@@ -216,9 +304,6 @@
       </ul>
     </div>
   </div>
-
-
-  <div id="clippy-container"></div>
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://unpkg.com/clippy.js@latest/build/clippy.min.js"></script>
