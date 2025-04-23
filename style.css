@@ -324,6 +324,10 @@ body {
     gap: 6px;
   }
 
+  .about-avatar {
+    border-right: none !important;
+  }
+
   .window {
     width: 80%;
     left: 5%;
