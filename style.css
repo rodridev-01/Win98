@@ -48,7 +48,6 @@ canvas {
   border: 1px dotted white;
 }
 
-
 .icon img {
   width: 32px;  
   height: 32px;  
@@ -64,6 +63,103 @@ canvas {
 .title-bar-controls button {
   font-weight: bold;
   font-size: 12px; 
+}
+
+.menu-bar {
+  display: flex;
+  background: silver;
+  border-bottom: 1px solid rgb(238, 238, 238);
+  padding: 2px 4px;
+  font-size: 12px;
+}
+.menu-bar div {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.profile-header img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+}
+
+.profile-header h3 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: bold; 
+}
+
+.profile-header .info {
+  font-size: 11px;
+  color: #333;
+  display: grid; 
+  grid-template-columns: auto auto auto; 
+  gap: 4px; 
+}
+
+.profile-header .info span {
+  display: block; 
+  text-align: center;
+}
+
+.profile-header .info span:first-child,
+.profile-header .info span:nth-child(2),
+.profile-header .info span:nth-child(3) {
+  font-weight: bold;
+  font-size: 12px; 
+}
+
+
+.follow-button {
+  display: inline-block;
+  margin-top: 4px;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+}
+
+.gallery img {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  border: 1px solid gray;
+}
+
+.bottom-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); 
+  padding: 0;
+  background: silver;
+  border-top: 2px solid white;
+  border-bottom: 1px solid rgb(226, 226, 226);
+}
+
+.bottom-bar button {
+  width: 100%; 
+  height: 30px; 
+  border: none;
+  background: silver;
+  font-size: 10px;
+}
+
+.bottom-bar button:last-child {
+  border-right: none; 
+}
+
+button img {
+  width: 20px; 
+  height: 20px;
+  object-fit: contain;
+  filter: grayscale(100%); 
 }
 
 /* Ventanas */

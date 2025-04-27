@@ -39,9 +39,16 @@
       <p>Música</p>
     </div>
 
-    <div class="icon" ondblclick="openWindow('retroGame', 'https://win98icons.alexmeub.com/icons/png/video_mg-2.png', 'Carrera Retro')">
-      <img src="https://win98icons.alexmeub.com/icons/png/video_mg-2.png" alt="Juego Retro">
+    <div class="icon"
+      ondblclick="openWindow('retroGame', 'https://win98icons.alexmeub.com/icons/png/joystick-4.png', 'Carrera Retro')">
+      <img src="https://win98icons.alexmeub.com/icons/png/joystick-4.png" alt="Juego Retro">
       <p>Flappy Retro</p>
+    </div>
+
+    <div class="icon"
+      ondblclick="openWindow('ig', 'Social/ig.png', 'Carrera Retro')">
+      <img src="Social/ig.png" alt="Juego Retro">
+      <p>Instagram.exe</p>
     </div>
   </div>
 
@@ -53,6 +60,13 @@
         <button aria-label="Minimize" onclick="minimizeWindow('musicPlayer')"></button>
         <button aria-label="Close" onclick="closeWindow('musicPlayer')"></button>
       </div>
+    </div>
+    <div class="menu-bar">
+      <div>File</div>
+      <div>Edit</div>
+      <div>View</div>
+      <div>Options</div>
+      <div>Help</div>
     </div>
 
     <div class="window-body" style="text-align: center; padding: 10px;">
@@ -101,24 +115,30 @@
     </div>
     <div style="position: relative; display: flex; justify-content: center;">
       <canvas id="gameCanvas" width="300" height="320"></canvas>
-      <div id="restartContainer" style="position: absolute; top: 80%; left: 50%; transform: translate(-50%, -50%); text-align: center; display: none;">
+      <div id="restartContainer"
+        style="position: absolute; top: 80%; left: 50%; transform: translate(-50%, -50%); text-align: center; display: none;">
         <button onclick="restartGame()">Reiniciar</button>
       </div>
     </div>
   </div>
-  
-  
+
+
 
   <!-- Calculadora -->
   <div id="calculator" class="calculator-window window" style="display: none;">
     <div class="title-bar">
       <div class="title-bar-text">Calculadora</div>
       <div class="title-bar-controls">
-        <div class="title-bar-controls">
-          <button aria-label="Minimize" onclick="minimizeWindow('calculator')"></button>
-          <button aria-label="Close" onclick="closeWindow('calculator')"></button>
-        </div>
+        <button aria-label="Minimize" onclick="minimizeWindow('calculator')"></button>
+        <button aria-label="Close" onclick="closeWindow('calculator')"></button>
       </div>
+    </div>
+    <div class="menu-bar">
+      <div>File</div>
+      <div>Edit</div>
+      <div>View</div>
+      <div>Options</div>
+      <div>Help</div>
     </div>
     <div class="window-body">
       <input type="text" id="calc-display" disabled class="calc-display" />
@@ -151,11 +171,16 @@
     <div class="title-bar">
       <div class="title-bar-text">Proyectos</div>
       <div class="title-bar-controls">
-        <div class="title-bar-controls">
-          <button aria-label="Minimize" onclick="minimizeWindow('window1')"></button>
-          <button aria-label="Close" onclick="closeWindow('window1')"></button>
-        </div>
+        <button aria-label="Minimize" onclick="minimizeWindow('window1')"></button>
+        <button aria-label="Close" onclick="closeWindow('window1')"></button>
       </div>
+    </div>
+    <div class="menu-bar">
+      <div>File</div>
+      <div>Edit</div>
+      <div>View</div>
+      <div>Options</div>
+      <div>Help</div>
     </div>
     <div class="window-body">
       <ul style="list-style: none; padding-left: 0;">
@@ -203,7 +228,76 @@
     </div>
   </div>
 
-
+  <div class="window" id="ig" style="width: 350px;">
+    <div class="title-bar">
+      <div class="title-bar-text">Instagram.exe</div>
+      <div class="title-bar-controls">
+        <button aria-label="Minimize" onclick="minimizeWindow('ig')"></button>
+        <button aria-label="Close" onclick="closeWindow('ig')"></button>
+      </div>
+    </div>
+  
+    <div class="menu-bar">
+      <div>File</div>
+      <div>Edit</div>
+      <div>View</div>
+      <div>Options</div>
+      <div>Help</div>
+    </div>
+  
+    <div class="window-body" style="display: flex; flex-direction: column; height: 500px; padding: 0;">
+  
+      <div class="profile-header">
+        <img src="https://i.redd.it/i0ugz0mkf3x91.png" alt="Foto Perfil">
+        <div>
+          <h3>@rodrigou.py</h3>
+          <div class="info">
+            <span>12</span>
+            <span>40</span>
+            <span>100</span>
+            <span>posts</span>
+            <span>followers</span>
+            <span>following</span>
+          </div>
+          <div class="follow-button">
+            <button class="button">+ Follow ▼</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="info-adicional">
+        <strong>Rodrigo Peña</strong><br>
+        <span>Frontend Developer</span><br>
+        hello world<br>
+      </div>
+  
+      <!-- Galería -->
+      <div id="gallery" class="gallery" style="flex: 1; overflow-y: auto; padding: 3px;">
+        <!-- Aquí se insertarán las imágenes dinámicamente -->
+      </div>
+  
+      <!-- Bottom bar -->
+      <div class="bottom-bar">
+        <button aria-label="Home">
+          <img src="https://win98icons.alexmeub.com/icons/png/accessibility_two_windows.png" alt="Home Icon">
+      </button>
+      <button aria-label="Search">
+          <img src="https://win98icons.alexmeub.com/icons/png/search_file-0.png" alt="Search Icon">
+      </button>
+      <button aria-label="Camera">
+          <img src="https://win98icons.alexmeub.com/icons/png/camera_2-0.png" alt="Camera Icon">
+      </button>
+      <button aria-label="Profile">
+          <img src="https://win98icons.alexmeub.com/icons/png/msagent_file-1.png" alt="Profile Icon">
+      </button>
+      
+      </div>
+      
+      
+  
+    </div>
+  </div>
+  
 
   <!-- Ventana RPG estilo carta profesional -->
   <div class="window" id="window2" style="max-width: 500px; margin: auto;">
@@ -215,10 +309,19 @@
       </div>
     </div>
 
+    <div class="menu-bar">
+      <div>File</div>
+      <div>Edit</div>
+      <div>View</div>
+      <div>Options</div>
+      <div>Help</div>
+    </div>
+
     <div class="window-body" style="display: flex; flex-wrap: wrap; gap: 1rem; padding: 1rem;">
 
       <!-- Avatar -->
-      <div class="about-avatar" style="flex: 1 1 120px; text-align: center; border-right: 2px dashed #000080; padding-right: 1rem;">
+      <div class="about-avatar"
+        style="flex: 1 1 120px; text-align: center; border-right: 2px dashed #000080; padding-right: 1rem;">
         <img src="https://rodridev.xyz/Images/profile.png" alt="RodriDev"
           style="width: 80px; image-rendering: pixelated; border: 1px inset #000;">
         <h1 style="font-size: 16px; margin: 0.5rem 0 0;">Rodrigo Peña</h1>

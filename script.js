@@ -264,3 +264,17 @@ progressBar.addEventListener('input', () => {
 volumeControl.addEventListener('input', () => {
   audio.volume = volumeControl.value;
 });
+
+fetch('Social/data.json')
+  .then(response => response.json())
+  .then(data => {
+    const gallery = document.getElementById('gallery');
+    data.forEach(post => {
+      const img = document.createElement('img');
+      img.src = post.image;
+      gallery.appendChild(img);
+    });
+  })
+  .catch(error => {
+    console.error('Error cargando imágenes:', error);
+  });
