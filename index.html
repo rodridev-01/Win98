@@ -8,7 +8,6 @@
 
   <!-- 98.css Styles -->
   <link rel="stylesheet" href="https://unpkg.com/98.css">
-  <link rel="stylesheet" type="text/css" href="https://unpkg.com/clippy.js@latest/build/clippy.css">
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -39,6 +38,11 @@
       <img src="https://win98icons.alexmeub.com/icons/png/cd_audio_cd_a-4.png" alt="Music Player">
       <p>Música</p>
     </div>
+
+    <div class="icon" ondblclick="openWindow('retroGame', 'https://win98icons.alexmeub.com/icons/png/video_mg-2.png', 'Carrera Retro')">
+      <img src="https://win98icons.alexmeub.com/icons/png/video_mg-2.png" alt="Juego Retro">
+      <p>Flappy Retro</p>
+    </div>
   </div>
 
 
@@ -62,7 +66,7 @@
       </div>
 
       <audio id="audioPlayer" style="display: none;">
-        <source src="Mar.mp3" type="audio/mpeg">
+        <source src="/Sounds/Mar.mp3" type="audio/mpeg">
         Tu navegador no soporta audio HTML5.
       </audio>
 
@@ -87,15 +91,33 @@
     </div>
   </div>
 
-
+  <div class="window" id="retroGame" style="margin: auto; width: 300px;">
+    <div class="title-bar">
+      <div class="title-bar-text">Flappy Retro - Notepad</div>
+      <div class="title-bar-controls">
+        <button aria-label="Minimize" onclick="minimizeWindow('retroGame')"></button>
+        <button aria-label="Close" onclick="closeWindow('retroGame')"></button>
+      </div>
+    </div>
+    <div style="position: relative; display: flex; justify-content: center;">
+      <canvas id="gameCanvas" width="300" height="320"></canvas>
+      <div id="restartContainer" style="position: absolute; top: 80%; left: 50%; transform: translate(-50%, -50%); text-align: center; display: none;">
+        <button onclick="restartGame()">Reiniciar</button>
+      </div>
+    </div>
+  </div>
+  
+  
 
   <!-- Calculadora -->
   <div id="calculator" class="calculator-window window" style="display: none;">
     <div class="title-bar">
       <div class="title-bar-text">Calculadora</div>
       <div class="title-bar-controls">
-        <button aria-label="Minimizar" onclick="minimizeWindow('calculator')">-</button>
-        <button aria-label="Cerrar" onclick="closeWindow('calculator')">x</button>
+        <div class="title-bar-controls">
+          <button aria-label="Minimize" onclick="minimizeWindow('calculator')"></button>
+          <button aria-label="Close" onclick="closeWindow('calculator')"></button>
+        </div>
       </div>
     </div>
     <div class="window-body">
@@ -129,8 +151,10 @@
     <div class="title-bar">
       <div class="title-bar-text">Proyectos</div>
       <div class="title-bar-controls">
-        <button aria-label="Minimizar" onclick="minimizeWindow('window1')">-</button>
-        <button aria-label="Cerrar" onclick="closeWindow('window1')">x</button>
+        <div class="title-bar-controls">
+          <button aria-label="Minimize" onclick="minimizeWindow('window1')"></button>
+          <button aria-label="Close" onclick="closeWindow('window1')"></button>
+        </div>
       </div>
     </div>
     <div class="window-body">
@@ -186,8 +210,8 @@
     <div class="title-bar">
       <div class="title-bar-text">Sobre mí</div>
       <div class="title-bar-controls">
-        <button aria-label="Minimizar" onclick="minimizeWindow('window2')">-</button>
-        <button aria-label="Cerrar" onclick="closeWindow('window2')">x</button>
+        <button aria-label="Minimize" onclick="minimizeWindow('window2')"></button>
+        <button aria-label="Close" onclick="closeWindow('window2')"></button>
       </div>
     </div>
 
@@ -304,9 +328,8 @@
     </div>
   </div>
 
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://unpkg.com/clippy.js@latest/build/clippy.min.js"></script>
   <script src="script.js"></script>
+  <script src="Game/game.js"></script>
 
 </body>
 

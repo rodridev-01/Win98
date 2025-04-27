@@ -28,6 +28,13 @@ body {
   gap: 10px; 
 }
 
+canvas {
+  background-image: url('Game/bg.jpg');
+  background-size: cover;
+  display: block;
+  margin: 0 auto;
+}
+
 .icon {
   width: 60px;
   height: 60px;
